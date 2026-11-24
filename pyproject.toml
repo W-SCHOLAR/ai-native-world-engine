@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ai-native-world-engine"
+version = "0.1.0"
+description = "Python 优先的 AI 原生世界模拟引擎。"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [{ name = "weitao" }]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "hatchling>=1.25",
+  "pytest>=8.0",
+  "ruff>=0.5",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ai_native_world_engine"]

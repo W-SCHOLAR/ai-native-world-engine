@@ -1,0 +1,30 @@
+{
+  "name": "ai-native-world-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "test:e2e": "node e2e/product-runtime.mjs",
+    "test:p0-demo": "node e2e/p0-interactive-demo.mjs",
+    "test:globe-focus": "node e2e/globe-local-focus.mjs",
+    "test:visible-intelligence": "node e2e/visible-intelligence.mjs"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.3.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "three": "^0.185.1",
+    "typescript": "^5.5.0",
+    "vite": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.185.1",
+    "playwright": "^1.61.1"
+  }
+}

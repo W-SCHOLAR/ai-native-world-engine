@@ -1,0 +1,159 @@
+{
+  "world": {
+    "id": "enterprise-earth-catalog-sample",
+    "attributes": {
+      "scenario": "catalog",
+      "coverage": {
+        "mode": "catalog_sample",
+        "ordinary_people_model": "anonymous_population_cohorts"
+      },
+      "governance": {
+        "ordinary_people": "anonymous aggregate or synthetic cohort only",
+        "private_individuals": "not directly simulated",
+        "prediction_policy": "scenario simulation and hypothesis exploration"
+      }
+    }
+  },
+  "nodes": [
+    {
+      "id": "country-us",
+      "type": "country",
+      "name": "United States",
+      "position": {"x": 0, "y": 0},
+      "attributes": {
+        "region": "north_america",
+        "governance_class": "public_entity"
+      }
+    },
+    {
+      "id": "org-science-council",
+      "type": "organization",
+      "name": "Global Science Council",
+      "position": {"x": 1.2, "y": 0.8},
+      "attributes": {
+        "agent_layer": "relationship_network",
+        "organization_kind": "science",
+        "governance_class": "public_or_synthetic_network"
+      },
+      "thought_bubbles": [
+        {
+          "text": "The network is turning observations into structured pressure.",
+          "source": "catalog"
+        }
+      ]
+    },
+    {
+      "id": "org-science-council:theory-group",
+      "type": "organization_member",
+      "name": "Theory Group",
+      "position": {"x": 1.0, "y": 1.3},
+      "attributes": {
+        "role": "theory",
+        "agent_layer": "relationship_network_member",
+        "parent_network": "org-science-council",
+        "synthetic": true
+      }
+    },
+    {
+      "id": "org-science-council:publication-board",
+      "type": "organization_member",
+      "name": "Publication Board",
+      "position": {"x": 1.6, "y": 1.1},
+      "attributes": {
+        "role": "publication",
+        "agent_layer": "relationship_network_member",
+        "parent_network": "org-science-council",
+        "synthetic": true
+      }
+    },
+    {
+      "id": "key-albert-einstein",
+      "type": "key_character",
+      "name": "Albert Einstein",
+      "position": {"x": 2.0, "y": -0.5},
+      "movement_target": {"x": 2.8, "y": -0.1},
+      "movement_speed": 0.35,
+      "attributes": {
+        "identity": "scientist",
+        "agent_layer": "key_character",
+        "governance_class": "public_historical_demonstration"
+      },
+      "key_character": {
+        "agent_layer": "key_character",
+        "public_figure": true,
+        "identity": "scientist",
+        "memory_policy": "public_or_scenario_memory_only",
+        "thought_seed": "If the rules are consistent, the world line can be explained."
+      },
+      "memories": [
+        {
+          "kind": "public_context",
+          "summary": "A public demonstration key character for scenario reasoning."
+        }
+      ],
+      "action_bullets": [
+        {
+          "text": "publishes a theoretical note",
+          "source": "catalog"
+        }
+      ]
+    },
+    {
+      "id": "cohort-us-doctors",
+      "type": "population_cohort",
+      "name": "Doctor Cohort",
+      "position": {"x": -0.8, "y": -0.7},
+      "attributes": {
+        "identity": "doctor",
+        "agent_layer": "population_cohort",
+        "synthetic": true,
+        "privacy": "anonymous_aggregate",
+        "population_scale": 1400
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "source": "org-science-council",
+      "target": "country-us",
+      "type": "operates_in",
+      "weight": 0.7,
+      "metadata": {"source": "catalog"}
+    },
+    {
+      "source": "org-science-council:theory-group",
+      "target": "org-science-council",
+      "type": "member_of",
+      "weight": 0.9,
+      "metadata": {"source": "catalog"}
+    },
+    {
+      "source": "org-science-council:publication-board",
+      "target": "org-science-council",
+      "type": "member_of",
+      "weight": 0.9,
+      "metadata": {"source": "catalog"}
+    },
+    {
+      "source": "org-science-council:theory-group",
+      "target": "org-science-council:publication-board",
+      "type": "coordination",
+      "weight": 0.55,
+      "metadata": {"source": "catalog"}
+    },
+    {
+      "source": "key-albert-einstein",
+      "target": "country-us",
+      "type": "public_context",
+      "weight": 0.4,
+      "metadata": {"source": "catalog"}
+    },
+    {
+      "source": "cohort-us-doctors",
+      "target": "country-us",
+      "type": "located_in",
+      "weight": 0.8,
+      "metadata": {"source": "catalog"}
+    }
+  ]
+}

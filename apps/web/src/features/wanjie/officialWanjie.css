@@ -1,0 +1,617 @@
+.wanjie-shell {
+  --wj-pink: #fb7299;
+  --wj-blue: #00aeec;
+  --wj-text: #18191c;
+  --wj-text2: #61666d;
+  --wj-text3: #9499a0;
+  --wj-line: #e3e5e7;
+  --wj-page: #f1f2f3;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: var(--wj-text);
+  background: var(--wj-page);
+  color-scheme: light;
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+.wanjie-shell button,
+.wanjie-shell input { font: inherit; }
+.wanjie-shell svg { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+.wanjie-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  height: 64px;
+  align-items: center;
+  gap: 18px;
+  padding: 0 24px;
+  background: #fff;
+  border-bottom: 1px solid var(--wj-line);
+}
+
+.wanjie-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  color: var(--wj-text);
+  background: none;
+  cursor: pointer;
+}
+
+.wanjie-brand strong {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.wanjie-tv {
+  width: 32px;
+  height: 32px;
+  overflow: visible;
+}
+.wanjie-tv path { fill: none; stroke: var(--wj-pink); stroke-width: 1.8; stroke-linecap: round; }
+.wanjie-tv rect { fill: var(--wj-pink); stroke: none; }
+.wanjie-tv circle { fill: #fff; stroke: none; }
+
+.wanjie-header-links {
+  display: flex;
+  gap: 4px;
+}
+
+.wanjie-header-links button {
+  height: 32px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 8px;
+  color: var(--wj-text);
+  background: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.wanjie-header-links button:hover,
+.wanjie-header-links button.is-active { color: var(--wj-pink); }
+
+.wanjie-search {
+  display: flex;
+  width: min(500px, 100%);
+  height: 40px;
+  margin-left: 12px;
+  overflow: hidden;
+  border: 1px solid var(--wj-line);
+  border-radius: 8px;
+  background: var(--wj-page);
+}
+
+.wanjie-search:focus-within {
+  border-color: var(--wj-pink);
+  background: #fff;
+}
+
+.wanjie-search input {
+  width: 100%;
+  padding: 0 12px;
+  border: 0;
+  outline: 0;
+  color: var(--wj-text);
+  background: transparent;
+  font-size: 14px;
+}
+
+.wanjie-search input::placeholder { color: #c9ccd0; }
+
+.wanjie-search-btn {
+  display: grid;
+  width: 48px;
+  place-items: center;
+  color: #fff;
+  background: var(--wj-pink);
+}
+
+.wanjie-search-btn svg { width: 18px; stroke: #fff; }
+
+.wanjie-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.wanjie-nav > button {
+  height: 32px;
+  padding: 0 10px;
+  border: 0;
+  color: var(--wj-text2);
+  background: none;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.wanjie-observer span {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: linear-gradient(145deg, #7ec8ff, #3b8cff);
+  font-size: 14px;
+}
+
+.wanjie-channels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 4px;
+  padding: 10px 24px 6px;
+  background: #fff;
+  border-bottom: 1px solid var(--wj-line);
+}
+
+.wanjie-channels button {
+  height: 30px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 15px;
+  color: var(--wj-text);
+  background: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.wanjie-channels button.is-active {
+  color: #fff;
+  background: var(--wj-pink);
+}
+
+.wanjie-home,
+.wanjie-world {
+  width: calc(100% - 80px);
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 16px 0 0;
+}
+
+.wanjie-recommended {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px 12px;
+}
+
+.wanjie-banner {
+  position: relative;
+  display: block;
+  grid-column: span 2;
+  grid-row: span 2;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  color: #fff;
+  background: #000;
+  text-align: left;
+  cursor: pointer;
+}
+
+.wanjie-hero-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wanjie-banner::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 46%;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.72));
+  content: "";
+}
+
+.wanjie-banner-copy {
+  position: absolute;
+  right: 16px;
+  bottom: 36px;
+  left: 16px;
+  z-index: 1;
+}
+
+.wanjie-banner-copy strong {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+.wanjie-banner-copy small {
+  display: block;
+  max-width: 440px;
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 13px;
+  line-height: 1.5;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+}
+
+.wanjie-banner-copy b,
+.wanjie-primary {
+  display: inline-flex;
+  height: 28px;
+  align-items: center;
+  margin-top: 10px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 6px;
+  color: #fff;
+  background: var(--wj-pink);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.wanjie-primary {
+  height: 32px;
+  cursor: pointer;
+}
+
+.wanjie-primary:disabled { cursor: not-allowed; opacity: 0.5; }
+
+.wanjie-banner-thumbs {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2;
+  display: flex;
+  gap: 6px;
+}
+
+.wanjie-banner-thumbs i {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+}
+
+.wanjie-banner-thumbs i.is-active {
+  width: 16px;
+  background: var(--wj-pink);
+}
+
+.wanjie-vcard button,
+.wanjie-continue button,
+.wanjie-poster {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.wanjie-vcard-cover,
+.wanjie-continue .wanjie-vcard-cover {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 6px;
+  aspect-ratio: 16 / 9;
+  background: #e3e5e7;
+}
+
+.wanjie-vcard-cover img,
+.wanjie-poster-frame img,
+.wanjie-event img,
+.wanjie-person img,
+.wanjie-world-player img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wanjie-vcard-stats {
+  position: absolute;
+  right: 8px;
+  bottom: 6px;
+  left: 8px;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  font-size: 13px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.wanjie-vcard-stats i {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-style: normal;
+}
+
+.wanjie-vcard strong,
+.wanjie-continue strong,
+.wanjie-poster strong {
+  display: -webkit-box;
+  overflow: hidden;
+  margin-top: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 22px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.wanjie-vcard:hover strong,
+.wanjie-poster:hover strong { color: var(--wj-blue); }
+
+.wanjie-vcard small,
+.wanjie-continue small,
+.wanjie-poster small {
+  display: block;
+  margin-top: 4px;
+  color: var(--wj-text3);
+  font-size: 13px;
+}
+
+.wanjie-block { padding: 18px 0 8px; }
+.wanjie-block--last { padding-bottom: 32px; }
+
+.wanjie-block-head,
+.wanjie-panel-heading {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.wanjie-block-head h2,
+.wanjie-panel-heading h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.wanjie-block-head span {
+  margin-left: auto;
+  color: var(--wj-text3);
+  font-size: 13px;
+}
+
+.wanjie-continue {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.wanjie-progress {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.wanjie-progress em {
+  display: block;
+  width: 28%;
+  height: 100%;
+  background: var(--wj-pink);
+}
+
+.wanjie-posters {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.wanjie-poster-frame {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 6px;
+  aspect-ratio: 3 / 4;
+  background: #e3e5e7;
+}
+
+.wanjie-world-badge {
+  position: absolute;
+  inset: 8px auto auto 8px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #fff;
+  background: rgba(20, 24, 32, 0.74);
+  font-size: 12px;
+  backdrop-filter: blur(8px);
+}
+
+.wanjie-world-badge.is-featured { background: rgba(251, 114, 153, 0.9); }
+
+.wanjie-events { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.wanjie-event {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 12px;
+  min-width: 0;
+  padding: 10px;
+  border: 0;
+  border-radius: 8px;
+  color: inherit;
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+}
+.wanjie-event img {
+  width: 96px;
+  height: 54px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+.wanjie-event b { color: var(--wj-text2); font-size: 13px; }
+.wanjie-event strong { display: block; margin-top: 4px; font-size: 14px; font-weight: 500; }
+.wanjie-event small { color: var(--wj-text3); }
+
+.wanjie-people {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.wanjie-person {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 10px;
+  min-width: 0;
+  padding: 12px;
+  border: 0;
+  border-radius: 8px;
+  color: inherit;
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+}
+.wanjie-person img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.wanjie-person span { display: grid; gap: 2px; }
+.wanjie-person small,
+.wanjie-person em { color: var(--wj-text3); font-size: 12px; font-style: normal; }
+.wanjie-person-static { cursor: default; }
+
+.wanjie-footer {
+  display: flex;
+  gap: 16px;
+  width: calc(100% - 80px);
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px 0 36px;
+  color: var(--wj-text3);
+  font-size: 13px;
+}
+
+.wanjie-world-player {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.wanjie-detail-status {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: #fff;
+  background: rgba(20, 24, 32, 0.72);
+  font-size: 13px;
+  backdrop-filter: blur(10px);
+}
+
+.wanjie-detail-status.is-featured { background: rgba(251, 114, 153, 0.9); }
+
+.wanjie-world-copy { padding: 16px 0 8px; }
+.wanjie-kicker { margin: 0 0 8px; color: var(--wj-text3); font-size: 13px; }
+.wanjie-world-copy h1 { margin: 0; font-size: 22px; font-weight: 600; }
+.wanjie-hero-tagline { margin: 8px 0 0; font-size: 15px; }
+.wanjie-hero-summary { margin: 12px 0 16px; color: var(--wj-text2); line-height: 1.7; }
+
+.wanjie-world-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin: 0 0 12px;
+}
+.wanjie-world-facts dt { color: var(--wj-text3); font-size: 12px; }
+.wanjie-world-facts dd { margin: 4px 0 0; }
+
+.wanjie-world-status { margin: 0 0 14px; color: var(--wj-text3); font-size: 13px; }
+.wanjie-emotional-promise {
+  margin: 0 0 10px;
+  padding: 12px 14px;
+  border-left: 3px solid var(--wj-pink);
+  border-radius: 0 6px 6px 0;
+  color: var(--wj-text2);
+  background: #fff;
+  line-height: 1.6;
+}
+.wanjie-world-actions { display: flex; gap: 10px; }
+
+.wanjie-secondary {
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--wj-line);
+  border-radius: 6px;
+  color: var(--wj-text2);
+  background: #fff;
+  cursor: pointer;
+}
+
+.wanjie-panel { padding: 20px 0 8px; }
+.wanjie-world-event {
+  margin: 0;
+  padding: 14px 16px;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.wanjie-missing {
+  display: grid;
+  min-height: 50vh;
+  place-items: center;
+  align-content: center;
+  gap: 16px;
+  color: var(--wj-text3);
+}
+
+.wanjie-empty { padding: 48px 0; color: var(--wj-text3); text-align: center; }
+
+@media (max-width: 1200px) {
+  .wanjie-recommended { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .wanjie-posters { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .wanjie-header-links { display: none; }
+}
+
+@media (max-width: 800px) {
+  .wanjie-home,
+  .wanjie-world,
+  .wanjie-footer { width: calc(100% - 32px); }
+  .wanjie-recommended,
+  .wanjie-continue,
+  .wanjie-posters,
+  .wanjie-people,
+  .wanjie-events { grid-template-columns: 1fr 1fr; }
+  .wanjie-banner { grid-column: 1 / -1; grid-row: auto; min-height: 200px; }
+}
+
+@media (max-width: 560px) {
+  .wanjie-recommended,
+  .wanjie-continue,
+  .wanjie-posters,
+  .wanjie-people,
+  .wanjie-events { grid-template-columns: 1fr; }
+  .wanjie-nav > button { display: none; }
+  .wanjie-header { gap: 10px; padding: 0 12px; }
+  .wanjie-search { margin-left: 0; }
+  .wanjie-channels { padding-right: 12px; padding-left: 12px; }
+  .wanjie-world-facts { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wanjie-shell * { transition: none !important; }
+}

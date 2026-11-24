@@ -1,0 +1,31 @@
+[project]
+name = "ai-native-world-worker"
+version = "0.1.0"
+description = "Worker execution boundary for AI Native World Engine product runs."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [{ name = "weitao" }]
+dependencies = [
+  "ai-native-world-engine==0.1.0",
+  "ai-native-world-api==0.1.0",
+]
+
+[project.optional-dependencies]
+postgres = [
+  "ai-native-world-api[postgres]==0.1.0",
+]
+
+[project.scripts]
+ai-native-world-worker = "ai_native_world_worker.cli:main"
+
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ai_native_world_worker"]
+
+[tool.uv.sources]
+ai-native-world-engine = { path = "../..", editable = true }
+ai-native-world-api = { path = "../api", editable = true }
